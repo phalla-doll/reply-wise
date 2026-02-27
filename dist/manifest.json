@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "ReplyWise",
+  "version": "1.0.0",
+  "description": "Inline AI comment generator for LinkedIn",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.linkedin.com/*",
+    "https://openrouter.ai/*"
+  ],
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/index.ts-loader-CHTiTtCt.js"
+      ],
+      "matches": [
+        "https://*.linkedin.com/*"
+      ],
+      "run_at": "document_idle",
+      "css": [
+        "assets/index-B7rVvPio.css"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "icons": {
+    "16": "public/icons/icon.svg",
+    "48": "public/icons/icon.svg",
+    "128": "public/icons/icon.svg"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://*.linkedin.com/*"
+      ],
+      "resources": [
+        "assets/*",
+        "chunks/index-C-w3SzV7.js",
+        "chunks/storage-DuEZe3v9.js",
+        "chunks/index.ts-CqqDcVp8.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}
