@@ -17,7 +17,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/index.ts-loader-CHTiTtCt.js"
+        "assets/index.ts-loader-CH1EwV87.js"
       ],
       "matches": [
         "https://*.linkedin.com/*"
@@ -44,8 +44,8 @@
       "resources": [
         "assets/*",
         "chunks/index-C-w3SzV7.js",
-        "chunks/storage-DuEZe3v9.js",
-        "chunks/index.ts-CqqDcVp8.js"
+        "chunks/storage-BeJrcW5H.js",
+        "chunks/index.ts-C-Af7a1x.js"
       ],
       "use_dynamic_url": false
     }

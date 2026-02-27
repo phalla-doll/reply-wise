@@ -1,6 +1,6 @@
 import { isLinkedInPage, findCommentEditor } from './platformParser';
 import { injectButton } from './editorInjector';
-import { throttle } from './domUtils';
+import { throttle, findAncestor } from './domUtils';
 
 const PROCESS_DELAY = 100;
 

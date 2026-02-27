@@ -1,3 +1,5 @@
+import { findAncestor } from './domUtils';
+
 export interface LinkedInPost {
   content: string;
   author?: string;
