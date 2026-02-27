@@ -31,7 +31,7 @@ export const LENGTHS: Length[] = ['Short', 'Medium', 'Long'];
 export async function getSettings(): Promise<Settings> {
   const data = await chrome.storage.local.get(Object.values(STORAGE_KEYS));
   return {
-    apiKey: data[STORAGE_KEYS.API_KEY] || DEFAULT_SETTINGS.apiKey,
+    apiKey: data[STORAGE_KEYS.API_KEY] || import.meta.env.VITE_OPENROUTER_API_KEY || DEFAULT_SETTINGS.apiKey,
     defaultTone: data[STORAGE_KEYS.DEFAULT_TONE] || DEFAULT_SETTINGS.defaultTone,
     defaultLength: data[STORAGE_KEYS.DEFAULT_LENGTH] || DEFAULT_SETTINGS.defaultLength,
     dailyUsage: data[STORAGE_KEYS.DAILY_USAGE] || DEFAULT_SETTINGS.dailyUsage,
