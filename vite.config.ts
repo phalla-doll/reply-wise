@@ -6,7 +6,13 @@ import manifest from './manifest.json'
 export default defineConfig({
   plugins: [
     react(),
-    crx({ manifest }),
+    crx({ 
+      manifest,
+      contentScripts: {
+        injectCss: false,
+        preambleCode: false,
+      },
+    }),
   ],
   build: {
     outDir: 'dist',

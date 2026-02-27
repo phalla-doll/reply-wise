@@ -29,7 +29,20 @@ export function Output() {
       
       {state.error && (
         <div className="bg-red-900/20 border border-red-800 rounded-lg p-3 text-red-300 text-sm">
-          {state.error}
+          {state.error.includes('Extension context invalid') ? (
+            <div className="flex flex-col gap-2">
+              <span>Extension needs to be reloaded. Please refresh the page to continue.</span>
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="bg-red-800 hover:bg-red-700 text-white font-medium py-1.5 px-3 rounded text-xs transition-colors"
+              >
+                Refresh Page
+              </button>
+            </div>
+          ) : (
+            state.error
+          )}
         </div>
       )}
       

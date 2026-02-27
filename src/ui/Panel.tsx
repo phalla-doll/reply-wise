@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { usePopover } from './PopoverContext';
 import { Controls } from './Controls';
 import { Output } from './Output';
+import { withExtensionContextValidation } from '../lib/extensionContext';
 import '../index.css';
 
 export function Panel() {
@@ -18,16 +19,18 @@ export function Panel() {
 
   const handleGenerate = async () => {
     dispatch({ type: 'GENERATE_START' });
-    
+
     try {
-      const response = await chrome.runtime.sendMessage({
-        type: 'GENERATE_COMMENT',
-        payload: {
-          context: { postContent: 'Sample post content' },
-          tone: state.tone,
-          length: state.length,
-        },
-      });
+      const response = await withExtensionContextValidation(
+        () => chrome.runtime.sendMessage({
+          type: 'GENERATE_COMMENT',
+          payload: {
+            context: { postContent: 'Sample post content' },
+            tone: state.tone,
+            length: state.length,
+          },
+        })
+      );
 
       if (response.error) {
         dispatch({ type: 'GENERATE_ERROR', error: response.error });
@@ -35,9 +38,9 @@ export function Panel() {
         dispatch({ type: 'GENERATE_SUCCESS', text: response.text });
       }
     } catch (error) {
-      dispatch({ 
-        type: 'GENERATE_ERROR', 
-        error: error instanceof Error ? error.message : 'Unknown error' 
+      dispatch({
+        type: 'GENERATE_ERROR',
+        error: error instanceof Error ? error.message : 'Unknown error',
       });
     }
   };
